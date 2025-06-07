@@ -40,16 +40,31 @@
                                 <div class="pt-0">
                                     <form action="{{ route('login') }}" method="POST" class="my-4">
                                         @csrf
+                                        @if (session('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
                                         <div class="form-group mb-3">
                                             <label for="email" class="form-label">Email address</label>
-                                            <input class="form-control" type="email" id="email" name="email"
-                                                required="" placeholder="Enter your email">
+                                            <input class="form-control" type="email" id="email" name="email" value="{{ old('email') }}"
+                                                 placeholder="Enter your email">
+                                            @error('email')
+                                                <div class="alert alert-danger">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
 
                                         <div class="form-group mb-3">
                                             <label for="password" class="form-label">Password</label>
-                                            <input class="form-control" type="password" required="" id="password"
+                                            <input class="form-control" type="password"  id="password"
                                                 name="password" placeholder="Enter your password">
+                                            @error('password')
+                                                <div class="alert alert-danger">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group d-flex mb-3">
                                             <div class="col-sm-6">

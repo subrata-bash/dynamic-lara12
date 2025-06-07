@@ -39,23 +39,48 @@
                                     <div class="pt-0">
                                         <form action="{{ route('register') }}" method="POST" class="my-4">
                                             @csrf
+                                            @if (session('error'))
+                                                <div class="alert alert-danger">
+                                                    {{ session('error') }}
+                                                </div>
+                                            @endif
                                             <div class="form-group mb-3">
                                                 <label for="name" class="form-label">Username</label>
-                                                <input class="form-control" name="name" type="text" id="name" required="" placeholder="Enter your Username">
+                                                <input class="form-control" name="name" type="text" id="name"  placeholder="Enter your Username" value="{{ old('name') }}">
+                                                @error('name')
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="email" class="form-label">Email address</label>
-                                                <input class="form-control" type="email" name="email" id="email" required="" placeholder="Enter your email">
+                                                <input class="form-control" type="email" name="email" id="email"  placeholder="Enter your email" value="{{ old('email') }}">
+                                                @error('email')
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input class="form-control" type="password" name="password" id="password" required="" placeholder="Enter your password">
+                                                <input class="form-control" type="password" name="password" id="password"  placeholder="Enter your password">
+                                                @error('password')
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                                <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" required="" placeholder="Confirm your password">
+                                                <input class="form-control" type="password" name="password_confirmation" id="password_confirmation"  placeholder="Confirm your password">
+                                                @error('password_confirmation')
+                                                    <div class="alert alert-danger">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="form-group mb-0 row">
                                                 <div class="col-12">
