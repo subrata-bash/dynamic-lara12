@@ -18,4 +18,8 @@ class AdminController extends Controller
 
         return redirect('/login');
     }
+    public function adminProfile()
+    {
+        return view('admin.admin_profile');
+    }
 }
