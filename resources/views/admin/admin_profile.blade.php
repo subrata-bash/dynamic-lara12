@@ -78,9 +78,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group mb-3 row">
-                                                        <label class="form-label">Photo</label>
+                                                        <label class="form-label">Profile Photo</label>
                                                         <div class="col-lg-12 col-xl-12">
-                                                            <input class="form-control" type="file" name="photo">
+                                                            <input class="form-control" type="file" name="photo" id="image">
                                                         </div>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Save changes</button>
@@ -89,7 +89,7 @@
                                                         <div class="col-lg-12 col-xl-12">
                                                             <img src="{{ !empty($profileData->photo) ? url('upload/user_images' . $profileData->photo) : url('upload/no_image.jpg') }}"
                                                                 class="rounded-circle avatar-xxl img-thumbnail float-start"
-                                                                alt="image profile">
+                                                                alt="image profile" id="showImage">
                                                         </div>
                                                     </div>
                                                 </div><!--end card-body-->
@@ -153,4 +153,9 @@
 
         </div>
     </div>
+
+    <script type="text/javascript">
+        
+    </script>
+
 @endsection
