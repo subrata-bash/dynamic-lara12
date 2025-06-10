@@ -40,7 +40,7 @@ class AdminController extends Controller
         $data->address = $request->address;
 
         $oldPhotoPath = $data->photo;
-        
+
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
@@ -53,7 +53,13 @@ class AdminController extends Controller
         }
         $data->save();
 
-        return redirect()->route('admin.profile')->with('success', 'Profile updated successfully');
+        $notification = [
+            'message' => 'Profile updated successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('admin.profile')->with($notification);
+
 
     }
     private function deleteOldImage(string $oldPhotoPath): void
