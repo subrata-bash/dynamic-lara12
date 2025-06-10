@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <div class="align-items-center">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ !empty($profileData->photo) ? url('upload/user_images' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                    <img src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
                                         class="rounded-circle avatar-xxl img-thumbnail float-start" alt="image profile">
                                     <div class="overflow-hidden ms-4">
                                         <h4 class="m-0 text-dark fs-20">{{ $profileData->name }}</h4>
@@ -27,11 +27,9 @@
                             <div class="tab-pane pt-4 active show" id="profile_setting" role="tabpanel"
                                 aria-labelledby="setting_tab">
                                 <div class="row">
-
                                     <div class="row">
                                         <div class="col-lg-6 col-xl-6">
                                             <div class="card border mb-0">
-
                                                 <div class="card-header">
                                                     <div class="row align-items-center">
                                                         <div class="col">
@@ -39,7 +37,9 @@
                                                         </div><!--end col-->
                                                     </div>
                                                 </div>
-
+                                            <form action="{{ route('profile.store') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
                                                 <div class="card-body">
                                                     <div class="form-group mb-3 row">
                                                         <label class="form-label">Name</label>
@@ -82,19 +82,21 @@
                                                     <div class="form-group mb-3 row">
                                                         <label class="form-label">Profile Photo</label>
                                                         <div class="col-lg-12 col-xl-12">
-                                                            <input class="form-control" type="file" name="photo" id="image">
+                                                            <input class="form-control" type="file" name="photo"
+                                                                id="image">
                                                         </div>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                                     <div class="form-group mb-3 row">
                                                         <label class="form-label"></label>
                                                         <div class="col-lg-12 col-xl-12">
-                                                            <img src="{{ !empty($profileData->photo) ? url('upload/user_images' . $profileData->photo) : url('upload/no_image.jpg') }}"
+                                                            <img src="{{ !empty($profileData->photo) ? url('upload/user_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
                                                                 class="rounded-circle avatar-xxl img-thumbnail float-start"
                                                                 alt="image profile" id="showImage">
                                                         </div>
                                                     </div>
                                                 </div><!--end card-body-->
+                                            </form>
                                             </div>
                                         </div>
 
@@ -157,15 +159,14 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('#image').change(function(e){
+        $(document).ready(function() {
+            $('#image').change(function(e) {
                 var reader = new FileReader();
-                reader.onload = function(e){
+                reader.onload = function(e) {
                     $('#showImage').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files[0]);
             })
         })
     </script>
-
 @endsection
