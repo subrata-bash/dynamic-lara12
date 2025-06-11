@@ -68,4 +68,10 @@ class AdminController extends Controller
             unlink(public_path('upload/user_images/' . $oldPhotoPath));
         }
     }
+
+    public function passwordUpdate(Request $request)
+    {
+
+    }
+
 }
