@@ -134,9 +134,9 @@
                                                         <div class="form-group mb-3 row">
                                                             <label class="form-label">Confirm Password</label>
                                                             <div class="col-lg-12 col-xl-12">
-                                                                <input class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" type="password" name="password_confirmation"
+                                                                <input class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" type="password" name="new_password_confirmation"
                                                                     placeholder="Confirm Password">
-                                                                    @error('password_confirmation')
+                                                                    @error('new_password_confirmation')
                                                                         <span class="text-danger">{{ $message }}</span>
                                                                     @enderror
                                                             </div>
